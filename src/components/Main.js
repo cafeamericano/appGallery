@@ -53,7 +53,7 @@ class Main extends Component {
       <main>
         {/* Header ################################################################## */}
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand text-light">
             <i className="fab fa-react"></i>
             <span> Portfolio</span>
           </a>
@@ -71,7 +71,7 @@ class Main extends Component {
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Applications")}
               >
-                <a class="nav-link" href="#">
+                <a class="nav-link">
                   Applications
                 </a>
               </li>
@@ -79,7 +79,7 @@ class Main extends Component {
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Skills")}
               >
-                <a class="nav-link" href="#">
+                <a class="nav-link">
                   Skills
                 </a>
               </li>
@@ -87,7 +87,7 @@ class Main extends Component {
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Connect")}
               >
-                <a class="nav-link" href="#">
+                <a class="nav-link">
                   Connect
                 </a>
               </li>
@@ -95,7 +95,7 @@ class Main extends Component {
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("AboutMe")}
               >
-                <a class="nav-link" href="#">
+                <a class="nav-link">
                   About
                 </a>
               </li>
