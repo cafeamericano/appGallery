@@ -5,7 +5,6 @@ class AboutMe extends Component {
     super(props);
     this.state = {
       visible: this.props.visibility,
-      selfClickCounter: 0,
       content: {
         headerText: "Meet Matthew Farmer.",
         paragraphOne:
@@ -14,12 +13,6 @@ class AboutMe extends Component {
           "My higher education includes a Bachelor’s Degree in Business Management as well as the (pending) completion of the UNC Chapel Hill Coding Bootcamp. Technical skills include HTML/CSS, JavaScript, NodeJS, ReactJS, and database manipulation. Certified by the American Society of Quality in process improvement, I am highly skilled with process flowcharting (an invaluable tool in application development). In a collaborative environment, I enjoy teaching others and sharing my knowledge for the benefit of the team."
       }
     };
-    this.tallySelfClicks = this.tallySelfClicks.bind(this);
-  }
-
-  tallySelfClicks() {
-    var x = this.state.selfClickCounter;
-    this.setState({ selfClickCounter: x + 1 });
   }
 
   componentDidUpdate() {
@@ -35,12 +28,9 @@ class AboutMe extends Component {
       return (
         /////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////
-        <section onClick={this.props.cumulativeClicker} class="card mb-4">
-          <subsection onClick={this.tallySelfClicks}>
+        <section class="card mb-4">
+          <subsection>
             <div className="card-header text-right">
-              <span class="badge badge-primary">
-                {this.state.selfClickCounter}
-              </span>
             </div>
             <div className="card-body">
               <h3 class="mb-4">

@@ -33,16 +33,17 @@ class Main extends Component {
   //When tallyCumulativeClicks is called, do the following
   toggleVisibilityForAll(componentName) {
     let visKeys = Object.keys(this.state.subComponentVisibilityToggler);
+    let setObj = {};
     for (var i = 0; i < visKeys.length; i++) {
-      if (visKeys[i] === componentName) {
-        this.setState({
-          subComponentVisibilityToggler: { [componentName]: true }
-        });
+      let x = visKeys[i];
+      if (x === componentName) {
+        setObj[x] = true;
       } else {
-        let x = visKeys[i];
-        this.setState({ subComponentVisibilityToggler: { [x]: false } });
+        setObj[x] = false;
       }
     }
+    this.setState({subComponentVisibilityToggler: setObj});
+    console.log(this.state.subComponentVisibilityToggler)
   }
 
   //RENDER=========================================================================================================================================================
@@ -106,15 +107,12 @@ class Main extends Component {
         <section className="container animated fadeInUpBig p-3">
           <AboutMe
             visibility={this.state.subComponentVisibilityToggler.AboutMe}
-            cumulativeClicker={this.tallyCumulativeClicks}
           ></AboutMe>
           <Applications
             visibility={this.state.subComponentVisibilityToggler.Applications}
-            cumulativeClicker={this.tallyCumulativeClicks}
           ></Applications>
           <Connect
             visibility={this.state.subComponentVisibilityToggler.Connect}
-            cumulativeClicker={this.tallyCumulativeClicks}
           ></Connect>
         </section>
       </main>
