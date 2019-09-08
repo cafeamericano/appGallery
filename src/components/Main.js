@@ -17,7 +17,7 @@ class Main extends Component {
     this.state = {
       totalClicks: 0,
       subComponentVisibilityToggler: {
-        Applications: false,
+        Applications: true,
         Skills: false,
         Connect: false,
         AboutMe: false
@@ -68,7 +68,7 @@ class Main extends Component {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li
-                class="nav-item active"
+                class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Applications")}
               >
                 <a class="nav-link" href="#">
@@ -104,7 +104,7 @@ class Main extends Component {
         </nav>
 
         {/* Content Section ################################################################## */}
-        <section className="container animated fadeInUpBig p-3">
+        <section className="container animated fadeInUpBig p-3 mt-5">
           <AboutMe
             visibility={this.state.subComponentVisibilityToggler.AboutMe}
           ></AboutMe>

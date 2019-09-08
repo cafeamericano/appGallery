@@ -24,16 +24,16 @@ class Applications extends Component {
     this.handleSearch();
   }
 
-  // componentWillMount() {
-  //   this.handleSearch();
-  // }
+  componentWillMount() {
+    this.handleSearch();
+  }
 
-  // componentDidMount() {
-  //   let x = this.props.visibility;
-  //   if (x !== this.state.visible) {
-  //     this.setState({ visible: x });
-  //   }
-  // }
+  componentDidMount() {
+    let x = this.props.visibility;
+    if (x !== this.state.visible) {
+      this.setState({ visible: x });
+    }
+  }
 
   handleSearch = user => {
     let url = "/hit-db";
