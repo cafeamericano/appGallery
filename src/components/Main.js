@@ -75,14 +75,14 @@ class Main extends Component {
                   Applications
                 </a>
               </li>
-              <li
+              {/* <li
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Skills")}
               >
                 <a class="nav-link">
                   Skills
                 </a>
-              </li>
+              </li> */}
               <li
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Connect")}
@@ -104,7 +104,7 @@ class Main extends Component {
         </nav>
 
         {/* Content Section ################################################################## */}
-        <section className="container animated fadeInUpBig p-3 mt-5">
+        <section className="container p-3 mt-5">
           <AboutMe
             visibility={this.state.subComponentVisibilityToggler.AboutMe}
           ></AboutMe>

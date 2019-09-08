@@ -73,7 +73,7 @@ class Applications extends Component {
         return (
           /////////////////////////////////////////////////////////////////////////////////
           /////////////////////////////////////////////////////////////////////////////////
-          <section class="card mb-4">
+          <section class="card mb-4 animated fadeInUpBig">
             <subsection>
               <div className="card-header text-right"></div>
               <div className="card-body">
