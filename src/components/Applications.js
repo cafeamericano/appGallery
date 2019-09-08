@@ -21,18 +21,19 @@ class Applications extends Component {
     if (x !== this.state.visible) {
       this.setState({ visible: x });
     }
-  }
-
-  componentWillMount() {
     this.handleSearch();
   }
 
-  componentDidMount() {
-    let x = this.props.visibility;
-    if (x !== this.state.visible) {
-      this.setState({ visible: x });
-    }
-  }
+  // componentWillMount() {
+  //   this.handleSearch();
+  // }
+
+  // componentDidMount() {
+  //   let x = this.props.visibility;
+  //   if (x !== this.state.visible) {
+  //     this.setState({ visible: x });
+  //   }
+  // }
 
   handleSearch = user => {
     let url = "/hit-db";
@@ -66,24 +67,26 @@ class Applications extends Component {
   );
 
   render() {
-    // if (this.state.visible) {
-    if (this.state.gatheredDbDocs.data.length !== 0) {
-      var items = this.state.gatheredDbDocs.data
-      return (
-        /////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-        <section class="card mb-4">
-          <subsection>
-            <div className="card-header text-right">
-            </div>
-            <div className="card-body">
-              <div className="row">{items.map(this.drawCards)}</div>
-            </div>
-          </subsection>
-        </section>
-        /////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////
-      );
+    if (this.state.visible) {
+      if (this.state.gatheredDbDocs.data.length !== 0) {
+        var items = this.state.gatheredDbDocs.data;
+        return (
+          /////////////////////////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////////////////////////
+          <section class="card mb-4">
+            <subsection>
+              <div className="card-header text-right"></div>
+              <div className="card-body">
+                <div className="row">{items.map(this.drawCards)}</div>
+              </div>
+            </subsection>
+          </section>
+          /////////////////////////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////////////////////////
+        );
+      } else {
+        return null;
+      }
     } else {
       return null;
     }
