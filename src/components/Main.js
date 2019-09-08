@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 
 //Child components
-import Fetcher from "./Fetcher";
 import AboutMe from "./AboutMe";
 import Applications from "./Applications";
 import Connect from "./Connect";
@@ -18,13 +17,12 @@ class Main extends Component {
     this.state = {
       totalClicks: 0,
       subComponentVisibilityToggler: {
-        Applications: true,
+        Applications: false,
         Skills: false,
         Connect: false,
         AboutMe: false
       }
     };
-    this.tallyCumulativeClicks = this.tallyCumulativeClicks.bind(this);
     this.toggleVisibilityForAll = this.toggleVisibilityForAll.bind(this);
   }
 
@@ -33,28 +31,17 @@ class Main extends Component {
   //SELF METHODS=========================================================================================================================================================
 
   //When tallyCumulativeClicks is called, do the following
-  tallyCumulativeClicks() {
-    const total = this.state.totalClicks;
-    this.setState({ totalClicks: total + 1 });
-  }
-
-  toggleVisibilityForAll() {
-    if (this.state.subComponentVisibilityToggler.AboutMe) {
-      this.setState({
-        subComponentVisibilityToggler: {
-          AboutMe: false,
-          Applications: false,
-          Connect: false
-        }
-      });
-    } else {
-      this.setState({
-        subComponentVisibilityToggler: {
-          AboutMe: true,
-          Applications: true,
-          Connect: true
-        }
-      });
+  toggleVisibilityForAll(componentName) {
+    let visKeys = Object.keys(this.state.subComponentVisibilityToggler);
+    for (var i = 0; i < visKeys.length; i++) {
+      if (visKeys[i] === componentName) {
+        this.setState({
+          subComponentVisibilityToggler: { [componentName]: true }
+        });
+      } else {
+        let x = visKeys[i];
+        this.setState({ subComponentVisibilityToggler: { [x]: false } });
+      }
     }
   }
 
@@ -79,22 +66,34 @@ class Main extends Component {
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item active">
+              <li
+                class="nav-item active"
+                onClick={() => this.toggleVisibilityForAll("Applications")}
+              >
                 <a class="nav-link" href="#">
                   Applications
                 </a>
               </li>
-              <li class="nav-item">
+              <li
+                class="nav-item"
+                onClick={() => this.toggleVisibilityForAll("Skills")}
+              >
                 <a class="nav-link" href="#">
                   Skills
                 </a>
               </li>
-              <li class="nav-item">
+              <li
+                class="nav-item"
+                onClick={() => this.toggleVisibilityForAll("Connect")}
+              >
                 <a class="nav-link" href="#">
                   Connect
                 </a>
               </li>
-              <li class="nav-item" onClick={this.toggleVisibilityForAll}>
+              <li
+                class="nav-item"
+                onClick={() => this.toggleVisibilityForAll("AboutMe")}
+              >
                 <a class="nav-link" href="#">
                   About
                 </a>
@@ -105,13 +104,6 @@ class Main extends Component {
 
         {/* Content Section ################################################################## */}
         <section className="container animated fadeInUpBig p-3">
-          <div onClick={this.toggleVisibilityForAll} class="text-right mb-3">
-            <i class="fas fa-eye-slash fa-2x"></i>
-          </div>
-          <div class="alert alert-secondary" role="alert">
-            Total Clicks Across All Components: {this.state.totalClicks}
-          </div>
-          <Fetcher></Fetcher>
           <AboutMe
             visibility={this.state.subComponentVisibilityToggler.AboutMe}
             cumulativeClicker={this.tallyCumulativeClicks}
