@@ -5,7 +5,7 @@ const router = express.Router();
 const path = require("path");
 
 //****************************************************
-const dbImport = require("./databaseConfig.js");
+const dbImport = require("../model/databaseConfig.js");
 let mongo = dbImport.mongo;
 let databaseName = dbImport.databaseName;
 let entriesCollection = dbImport.entriesCollection;

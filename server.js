@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "build")));
 
 //Utilize back-end routes
-app.use(require("./routes.js"));
+app.use(require("./controller/routes.js"));
 
 //START SERVER================================================================
 
