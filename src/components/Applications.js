@@ -51,8 +51,13 @@ class Applications extends Component {
   drawCards = argObj => (
     <div className="col-xl-4 col-md-6">
       <div className="card shadow mb-3">
-        <h5 className="p-3">{argObj.title}</h5>
+        <div className="card-header text-left">
+          <h5>{argObj.title}</h5>
+        </div>
         <img src={argObj.imagePath} style={appThumbnailStyle} />
+        <div className="card-footer text-left">
+          <small>Uses: {argObj.techsUsed}</small>
+        </div>
         <div className="card-footer text-right">
           <a href={argObj.githubLink}>
             <i class="fab fa-github"></i>
@@ -69,15 +74,42 @@ class Applications extends Component {
   render() {
     if (this.state.visible) {
       if (this.state.gatheredDbDocs.data.length !== 0) {
-        var items = this.state.gatheredDbDocs.data;
+        var allItems = this.state.gatheredDbDocs.data;
+        var featuredApps = allItems.filter(function(item) {
+          return item.featured === true;
+        });
+        var minorApps = allItems.filter(function(item) {
+          return item.featured === false && item.language === "JavaScript";
+        });
+        var nonJsApps = allItems.filter(function(item) {
+          return item.language !== "JavaScript";
+        });
         return (
           /////////////////////////////////////////////////////////////////////////////////
           /////////////////////////////////////////////////////////////////////////////////
-          <section class="card mb-4 animated fadeInUpBig">
-            <subsection>
-              <div className="card-header text-right"></div>
+          <section class="animated fadeInUpBig">
+            <subsection className="card mb-4">
+              <div className="card-header text-left">
+                <h5>Featured Apps</h5>
+              </div>
               <div className="card-body">
-                <div className="row">{items.map(this.drawCards)}</div>
+                <div className="row">{featuredApps.map(this.drawCards)}</div>
+              </div>
+            </subsection>
+            <subsection className="card mb-4">
+              <div className="card-header text-left">
+                <h5>Minor Apps</h5>
+              </div>
+              <div className="card-body">
+                <div className="row">{minorApps.map(this.drawCards)}</div>
+              </div>
+            </subsection>
+            <subsection className="card mb-4">
+              <div className="card-header text-left">
+                <h5>Non-JS Apps</h5>
+              </div>
+              <div className="card-body">
+                <div className="row">{nonJsApps.map(this.drawCards)}</div>
               </div>
             </subsection>
           </section>

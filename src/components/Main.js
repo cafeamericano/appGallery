@@ -3,9 +3,10 @@
 import React, { Component } from "react";
 
 //Child components
-import AboutMe from "./AboutMe";
 import Applications from "./Applications";
+import Skills from "./Skills";
 import Connect from "./Connect";
+import AboutMe from "./AboutMe";
 
 //STYLING=========================================================================================================================================================
 
@@ -42,8 +43,8 @@ class Main extends Component {
         setObj[x] = false;
       }
     }
-    this.setState({subComponentVisibilityToggler: setObj});
-    console.log(this.state.subComponentVisibilityToggler)
+    this.setState({ subComponentVisibilityToggler: setObj });
+    console.log(this.state.subComponentVisibilityToggler);
   }
 
   //RENDER=========================================================================================================================================================
@@ -71,33 +72,25 @@ class Main extends Component {
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Applications")}
               >
-                <a class="nav-link">
-                  Applications
-                </a>
+                <a class="nav-link">Applications</a>
               </li>
-              {/* <li
+              <li
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Skills")}
               >
-                <a class="nav-link">
-                  Skills
-                </a>
-              </li> */}
+                <a class="nav-link">Skills</a>
+              </li>
               <li
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("Connect")}
               >
-                <a class="nav-link">
-                  Connect
-                </a>
+                <a class="nav-link">Connect</a>
               </li>
               <li
                 class="nav-item"
                 onClick={() => this.toggleVisibilityForAll("AboutMe")}
               >
-                <a class="nav-link">
-                  About
-                </a>
+                <a class="nav-link">About</a>
               </li>
             </ul>
           </div>
@@ -105,15 +98,18 @@ class Main extends Component {
 
         {/* Content Section ################################################################## */}
         <section className="container p-3 mt-5">
-          <AboutMe
-            visibility={this.state.subComponentVisibilityToggler.AboutMe}
-          ></AboutMe>
           <Applications
             visibility={this.state.subComponentVisibilityToggler.Applications}
           ></Applications>
+          <Skills
+            visibility={this.state.subComponentVisibilityToggler.Skills}
+          ></Skills>
           <Connect
             visibility={this.state.subComponentVisibilityToggler.Connect}
           ></Connect>
+          <AboutMe
+            visibility={this.state.subComponentVisibilityToggler.AboutMe}
+          ></AboutMe>
         </section>
       </main>
     );
