@@ -59,13 +59,17 @@ class Applications extends Component {
       return item.language !== "JavaScript";
     });
     //Render
-    return (
-      <div>
-        <AppsSection sectionName="Featured Apps" data={featuredApps} />
-        <AppsSection sectionName="Minor Apps" data={minorApps} />
-        <AppsSection sectionName="Non-JS Apps" data={nonJsApps} />
-      </div>
-    );
+    if (this.state.visible) {
+      return (
+        <div>
+          <AppsSection sectionName="Featured Apps" data={featuredApps} />
+          <AppsSection sectionName="Minor Apps" data={minorApps} />
+          <AppsSection sectionName="Non-JS Apps" data={nonJsApps} />
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
