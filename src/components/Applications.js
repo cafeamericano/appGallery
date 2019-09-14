@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AppCard from "./AppCard";
+import AppsFeatured from "./AppsFeatured";
 
 class Applications extends Component {
   constructor(props) {
@@ -46,14 +46,7 @@ class Applications extends Component {
   }
 
   render() {
-    let cards = this.state.databaseRecords.data.map(item => (
-      <AppCard key={item._id} data={item} />
-    ));
-    if (this.state.visible) {
-      return <div className="row animated fadeInUpBig">{cards}</div>;
-    } else {
-      return null;
-    }
+    return <AppsFeatured data={this.state.databaseRecords.data} />;
   }
 }
 
