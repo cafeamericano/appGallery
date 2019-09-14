@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import AppsFeatured from "./AppsFeatured";
+//import AppsFeatured from "./AppsFeatured";
+import AppsSection from "./AppsSection";
 
 class Applications extends Component {
   constructor(props) {
@@ -46,19 +47,26 @@ class Applications extends Component {
   }
 
   render() {
-    return <AppsFeatured data={this.state.databaseRecords.data} />;
+    //Prep
+    var allItems = this.state.databaseRecords.data;
+    var featuredApps = allItems.filter(function(item) {
+      return item.featured === true;
+    });
+    var minorApps = allItems.filter(function(item) {
+      return item.featured === false && item.language === "JavaScript";
+    });
+    var nonJsApps = allItems.filter(function(item) {
+      return item.language !== "JavaScript";
+    });
+    //Render
+    return (
+      <div>
+        <AppsSection sectionName="Featured Apps" data={featuredApps} />
+        <AppsSection sectionName="Minor Apps" data={minorApps} />
+        <AppsSection sectionName="Non-JS Apps" data={nonJsApps} />
+      </div>
+    );
   }
 }
 
 export default Applications;
-
-// var allItems = this.state.databaseRecords.data;
-// var featuredApps = allItems.filter(function(item) {
-//   return item.featured === true;
-// });
-// var minorApps = allItems.filter(function(item) {
-//   return item.featured === false && item.language === "JavaScript";
-// });
-// var nonJsApps = allItems.filter(function(item) {
-//   return item.language !== "JavaScript";
-// });
