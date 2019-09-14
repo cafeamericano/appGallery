@@ -6,7 +6,7 @@ class Applications extends Component {
     super(props);
     this.state = {
       visible: this.props.visibility,
-      gatheredDbDocs: {
+      databaseRecords: {
         data: []
       }
     };
@@ -40,17 +40,17 @@ class Applications extends Component {
         console.log(results);
         console.log(results.length);
         this.setState({
-          gatheredDbDocs: results
+          databaseRecords: results
         });
       });
   }
 
   render() {
-    let cards = this.state.gatheredDbDocs.data.map(item => (
+    let cards = this.state.databaseRecords.data.map(item => (
       <AppCard key={item._id} data={item} />
     ));
     if (this.state.visible) {
-      return <div className="row">{cards}</div>;
+      return <div className="row animated fadeInUpBig">{cards}</div>;
     } else {
       return null;
     }
@@ -59,7 +59,7 @@ class Applications extends Component {
 
 export default Applications;
 
-// var allItems = this.state.gatheredDbDocs.data;
+// var allItems = this.state.databaseRecords.data;
 // var featuredApps = allItems.filter(function(item) {
 //   return item.featured === true;
 // });
