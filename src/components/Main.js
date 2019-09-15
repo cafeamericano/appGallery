@@ -3,30 +3,6 @@ import React, { Component } from "react";
 import ApplicationsContainer from "./ApplicationsContainer";
 import Keyword from "./Keyword";
 
-var keywordsArr = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "SQL",
-  "JSON",
-  "React",
-  "NodeJS",
-  "ExpressJS",
-  "ReactJS",
-  "jQuery",
-  "Bootstrap",
-  "Materialize",
-  "MySQL",
-  "MongoDB",
-  "PostgreSQL",
-  "Firebase DB",
-  "Firebase Authentication",
-  "Handlebars",
-  "C++",
-  "Python",
-  "Java"
-];
-
 var style = {
   ApplicationsContainer: {
     backgroundImage:
@@ -45,39 +21,62 @@ class Main extends Component {
       subComponentVisibilityToggler: {
         Applications: true
       },
+      keywordsArray: [],
       activeKeywords: []
     };
+    this.grabKeywordsFromDatabase = this.grabKeywordsFromDatabase.bind(this);
     this.pullInKeywordName = this.pullInKeywordName.bind(this);
+  }
+
+  componentWillMount() {
+    this.grabKeywordsFromDatabase();
+  }
+
+  grabKeywordsFromDatabase() {
+    let url = "/keywords";
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.setState({
+          keywordsArray: response
+        });
+      });
   }
 
   pullInKeywordName(arg) {
     var activeKeywords = this.state.activeKeywords;
-    console.log(activeKeywords)
+    console.log(activeKeywords);
     var isAlreadyInArray = activeKeywords.includes(arg);
-    console.log(isAlreadyInArray)
+    console.log(isAlreadyInArray);
     if (isAlreadyInArray) {
       let updatedArray = activeKeywords.filter(item => {
         return item !== arg;
       });
-      console.log(updatedArray)
+      console.log(updatedArray);
       this.setState({ activeKeywords: updatedArray });
     } else {
-      let updatedArray = activeKeywords.concat(arg)
-      console.log(updatedArray)
+      let updatedArray = activeKeywords.concat(arg);
+      console.log(updatedArray);
       this.setState({ activeKeywords: updatedArray });
     }
   }
 
   render() {
-    let allKeywords = keywordsArr.map((keywordName, i) => (
-      <Keyword key={i} keywordName={keywordName} passKeywordNameToParent={this.pullInKeywordName} />
+    let allKeywords = this.state.keywordsArray.map((keyword, i) => (
+      <Keyword
+        key={i}
+        keywordName={keyword.name}
+        passKeywordNameToParent={this.pullInKeywordName}
+      />
     ));
     return (
       <main className="container-fluid">
         <div className="row">
           {/* Column */}
           <section className="col-9 p-3" style={style.ApplicationsContainer}>
-            <ApplicationsContainer activeKeywords={this.state.activeKeywords}
+            <ApplicationsContainer
+              activeKeywords={this.state.activeKeywords}
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>

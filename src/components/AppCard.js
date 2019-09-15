@@ -35,9 +35,6 @@ class AppCard extends Component {
             <h5>{this.props.data.title}</h5>
           </div>
           <img src={this.props.data.imagePath} style={appThumbnailStyle} />
-          <div className="card-footer text-left">
-            <small>Uses: {this.props.data.keywords}</small>
-          </div>
           <div className="card-footer text-right">
             <a href={this.props.data.githubLink}>
               <i className="fab fa-github"></i>

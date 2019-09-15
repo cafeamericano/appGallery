@@ -36,6 +36,18 @@ app.get("/hit-db", (req, res) => {
     });
 });
 
+//Find all entries in the collection
+app.get("/keywords", (req, res) => {
+  db.Keyword.find({})
+    .sort({ type: 1 })
+    .then(function(queryResult) {
+      res.json(queryResult);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
 //Catch all
 app.get("*", function(req, res) {
   res.sendFile(path.resolve(__dirname, "build", "index.html"));
