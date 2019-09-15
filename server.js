@@ -39,7 +39,19 @@ app.get("/hit-db", (req, res) => {
 //Find all entries in the collection
 app.get("/keywords", (req, res) => {
   db.Keyword.find({})
-    .sort({ type: 1 })
+    .sort({ type: 1 , name: 1})
+    .then(function(queryResult) {
+      res.json(queryResult);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
+
+//Find all entries in the collection
+app.get("/keywords-mini", (req, res) => {
+  db.Keyword.find({})
+    .sort({ type: 1 , name: 1})
     .then(function(queryResult) {
       res.json(queryResult);
     })

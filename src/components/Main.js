@@ -67,9 +67,21 @@ class Main extends Component {
       <Keyword
         key={i}
         keywordName={keyword.name}
+        type={keyword.type}
         passKeywordNameToParent={this.pullInKeywordName}
       />
     ));
+
+    //Define tag groups
+    let languages = allKeywords.filter(item => item.props.type === "language");
+    let frameworks = allKeywords.filter(
+      item => item.props.type === "framework"
+    );
+    let databases = allKeywords.filter(item => item.props.type === "database");
+    let otherTechnologies = allKeywords.filter(
+      item => item.props.type === "other"
+    );
+
     return (
       <main className="container-fluid">
         <div className="row">
@@ -84,8 +96,30 @@ class Main extends Component {
           <section className="col-3 bg-light text-dark p-4">
             <h4>App Gallery</h4>
             <h1>Matthew Farmer</h1>
-            <hr />
-            {allKeywords}
+
+            <div className="mb-4">
+              Languages
+              <hr></hr>
+              {languages}
+            </div>
+
+            <div className="mb-4">
+              Frameworks
+              <hr></hr>
+              {frameworks}
+            </div>
+
+            <div className="mb-4">
+              Databases
+              <hr></hr>
+              {databases}
+            </div>
+
+            <div className="mb-4">
+              Other Technologies
+              <hr></hr>
+              {otherTechnologies}
+            </div>
           </section>
         </div>
       </main>
