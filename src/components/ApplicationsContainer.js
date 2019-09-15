@@ -48,8 +48,9 @@ class ApplicationsContainer extends Component {
       return item.language !== "JavaScript";
     });
     var queriedApps = allItems.filter(function(item) {
-      return item.techsUsed === activeTags;
+      return item.techsUsed.includes("C++");
     });
+    console.log(queriedApps)
 
     //Render
     return (
