@@ -5,31 +5,19 @@ class ApplicationsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: this.props.visibility,
       databaseRecords: {
         data: []
-      }
+      },
+      activeTags: this.props.activeTags
     };
   }
 
   componentDidUpdate() {
-    //Allows state to change when prop is updated by parent
-    let x = this.props.visibility;
-    if (x !== this.state.visible) {
-      this.setState({ visible: x });
-    }
     this.handleSearch();
   }
 
   componentWillMount() {
     this.handleSearch();
-  }
-
-  componentDidMount() {
-    let x = this.props.visibility;
-    if (x !== this.state.visible) {
-      this.setState({ visible: x });
-    }
   }
 
   handleSearch() {
@@ -46,6 +34,7 @@ class ApplicationsContainer extends Component {
   render() {
     //Prep
     var allItems = this.state.databaseRecords.data;
+    var activeTags = this.state.activeTags;
     var featuredApps = allItems.filter(function(item) {
       return item.featured === true;
     });
@@ -55,18 +44,22 @@ class ApplicationsContainer extends Component {
     var nonJsApps = allItems.filter(function(item) {
       return item.language !== "JavaScript";
     });
+    var nonJsApps = allItems.filter(function(item) {
+      return item.language !== "JavaScript";
+    });
+    var queriedApps = allItems.filter(function(item) {
+      return item.techsUsed === activeTags;
+    });
+
     //Render
-    if (this.state.visible) {
-      return (
-        <div>
-          <AppsSection sectionName="Featured Apps" data={featuredApps} />
-          <AppsSection sectionName="Minor Apps" data={minorApps} />
-          <AppsSection sectionName="Non-JS Apps" data={nonJsApps} />
-        </div>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <div>
+        <AppsSection sectionName="Queried Apps" data={queriedApps} />
+        <AppsSection sectionName="Featured Apps" data={featuredApps} />
+        <AppsSection sectionName="Minor Apps" data={minorApps} />
+        <AppsSection sectionName="Non-JS Apps" data={nonJsApps} />
+      </div>
+    );
   }
 }
 

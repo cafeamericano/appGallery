@@ -21,7 +21,10 @@ var tagsArr = [
   "PostgreSQL",
   "Firebase DB",
   "Firebase Authentication",
-  "Handlebars"
+  "Handlebars",
+  "C++",
+  "Python",
+  "Java"
 ];
 
 var style = {
@@ -74,7 +77,7 @@ class Main extends Component {
         <div className="row">
           {/* Column */}
           <section className="col-9 p-3" style={style.ApplicationsContainer}>
-            <ApplicationsContainer
+            <ApplicationsContainer activeTags={this.state.activeTags}
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>
