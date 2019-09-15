@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
 var appThumbnailStyle = {
-  height: "200px"
+  height: "200px",
+  maxWidth: "100%"
 };
 
 class AppCard extends Component {
@@ -16,7 +17,10 @@ class AppCard extends Component {
   }
 
   activateHover() {
-    this.setState({ isHovered: true, activeClass: "animated pulse col-xl-4 col-md-6" });
+    this.setState({
+      isHovered: true,
+      activeClass: "animated pulse col-xl-4 col-md-6"
+    });
   }
 
   deactivateHover() {
@@ -24,6 +28,36 @@ class AppCard extends Component {
   }
 
   render() {
+    //Place a star if this app is featured
+    let featuredIndicator = this.props.data.isFeatured ? (
+      <i className="float-right fas fa-star fa-lg text-warning p-1"></i>
+    ) : (
+      ""
+    );
+    //Place a team icon if this app is a collaboration
+    let collaborationIndicator = this.props.data.isCollaboration ? (
+      <i className="float-right fas fa-users fa-lg text-secondary p-1"></i>
+    ) : (
+      ""
+    );
+    //Only show the 'Experience' option for deployed apps
+    let deployedLink =
+      this.props.data.deployedLink !== "" ? (
+        <span>
+          <span> | </span>
+          <a target="_blank" href={this.props.data.deployedLink}>
+            <small>Experience</small>
+          </a>
+        </span>
+      ) : (
+        ""
+      );
+    //If app is deployed, thumbnail links to experience; otherwise, link to GitHub repo
+    let thumbnailLink =
+      this.props.data.deployedLink !== ""
+        ? this.props.data.deployedLink
+        : this.props.data.githubLink;
+    //Render as follows
     return (
       <div
         className={this.state.activeClass}
@@ -32,17 +66,18 @@ class AppCard extends Component {
       >
         <div className="card shadow mb-3">
           <div className="card-header text-left">
-            <h5>{this.props.data.title}</h5>
+            <h5 className="float-left">{this.props.data.title}</h5>
+            {featuredIndicator}
+            {collaborationIndicator}
           </div>
-          <img src={this.props.data.imagePath} style={appThumbnailStyle} />
+          <a target="_blank" href={thumbnailLink}>
+            <img src={this.props.data.imagePath} style={appThumbnailStyle} />
+          </a>
           <div className="card-footer text-right">
-            <a href={this.props.data.githubLink}>
-              <i className="fab fa-github"></i>
+            <a target="_blank" href={this.props.data.githubLink}>
+              <small>View Source</small>
             </a>
-            <span> | </span>
-            <a href={this.props.data.deployedLink}>
-              <i className="fas fa-external-link-alt"></i>
-            </a>
+            {deployedLink}
           </div>
         </div>
       </div>

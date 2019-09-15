@@ -27,7 +27,7 @@ app.use(express.static(path.resolve(__dirname, "build")));
 //Find all entries in the collection
 app.get("/hit-db", (req, res) => {
   db.App.find({})
-    .sort({ isFeatured: -1, publishDate: -1 })
+    .sort({ isFeatured: -1, isCollaboration: -1, publishDate: -1 })
     .then(function(queryResult) {
       res.json(queryResult);
     })

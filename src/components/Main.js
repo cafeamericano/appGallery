@@ -94,8 +94,8 @@ class Main extends Component {
           </section>
           {/* Column */}
           <section className="col-3 bg-light text-dark p-4">
-            <h4>App Gallery</h4>
-            <h1>Matthew Farmer</h1>
+            <h4>Matthew Farmer's</h4>
+            <h2>App Gallery</h2>
 
             <div className="mb-4">
               Languages
