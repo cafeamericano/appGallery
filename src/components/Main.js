@@ -1,8 +1,5 @@
-//IMPORTS=========================================================================================================================================================
-
 import React, { Component } from "react";
 
-//Child components
 import ApplicationsContainer from "./ApplicationsContainer";
 import Tag from "./Tag";
 
@@ -27,8 +24,6 @@ var tagsArr = [
   "Handlebars"
 ];
 
-//STYLING=========================================================================================================================================================
-
 var style = {
   ApplicationsContainer: {
     backgroundImage:
@@ -39,8 +34,6 @@ var style = {
   }
 };
 
-//NAME, STATE, AND BINDING=========================================================================================================================================================
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -48,35 +41,20 @@ class Main extends Component {
       totalClicks: 0,
       subComponentVisibilityToggler: {
         Applications: true
-      }
+      },
+      activeTags: []
     };
-    this.toggleVisibilityForAll = this.toggleVisibilityForAll.bind(this);
+    this.pullInTagName = this.pullInTagName.bind(this);
   }
 
-  //LIFECYCLE METHODS=========================================================================================================================================================
-
-  //SELF METHODS=========================================================================================================================================================
-
-  //When tallyCumulativeClicks is called, do the following
-  toggleVisibilityForAll(componentName) {
-    let visKeys = Object.keys(this.state.subComponentVisibilityToggler);
-    let setObj = {};
-    for (var i = 0; i < visKeys.length; i++) {
-      let x = visKeys[i];
-      if (x === componentName) {
-        setObj[x] = true;
-      } else {
-        setObj[x] = false;
-      }
-    }
-    this.setState({ subComponentVisibilityToggler: setObj });
-    console.log(this.state.subComponentVisibilityToggler);
+  pullInTagName(arg) {
+    this.setState({ activeTags: [...this.state.activeTags, arg] });
   }
-
-  //RENDER=========================================================================================================================================================
 
   render() {
-    let allTags = tagsArr.map((tagName, i) => <Tag key={i} tagName={tagName} />);
+    let allTags = tagsArr.map((tagName, i) => (
+      <Tag key={i} tagName={tagName} passTagNameToParent={this.pullInTagName} />
+    ));
     return (
       <main className="container-fluid">
         <div className="row">
@@ -99,5 +77,4 @@ class Main extends Component {
   }
 }
 
-//Export class AllEntriesList to be used by App.js
 export default Main;

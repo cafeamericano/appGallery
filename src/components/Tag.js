@@ -13,9 +13,13 @@ class Tag extends Component {
   }
 
   toggleTag = () => {
-    this.state.isClicked
-      ? this.setState({ isClicked: false, activeClass: inactiveTagStyle })
-      : this.setState({ isClicked: true, activeClass: activeTagStyle });
+    if (this.state.isClicked) {
+      this.setState({ isClicked: false, activeClass: inactiveTagStyle });
+      this.props.passTagNameToParent("");
+    } else {
+      this.setState({ isClicked: true, activeClass: activeTagStyle });
+      this.props.passTagNameToParent(this.props.tagName);
+    }
   };
 
   render() {
