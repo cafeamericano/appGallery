@@ -81,14 +81,14 @@ class Main extends Component {
       <main className="container-fluid">
         <div className="row">
           {/* Column */}
-          <section className="col-9 p-3">
+          <section className="col-md-9 col-sm-12 p-3">
             <ApplicationsContainer
               activeKeywords={this.state.activeKeywords}
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>
           {/* Column */}
-          <section className="col-3 bg-light text-dark p-4">
+          <section className="col-md-3 bg-light text-dark p-4 shadow">
             <div style={sidepanelStyle}>
               <h4>Matthew Farmer's</h4>
               <h2>App Gallery</h2>

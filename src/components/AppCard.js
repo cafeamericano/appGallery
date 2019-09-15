@@ -10,7 +10,7 @@ class AppCard extends Component {
     super(props);
     this.state = {
       isHovered: false,
-      activeClass: "col-xl-4 col-md-6"
+      activeClass: "col-xl-4 col-lg-6"
     };
     this.activateHover = this.activateHover.bind(this);
     this.deactivateHover = this.deactivateHover.bind(this);
@@ -19,12 +19,12 @@ class AppCard extends Component {
   activateHover() {
     this.setState({
       isHovered: true,
-      activeClass: "animated pulse col-xl-4 col-md-6"
+      activeClass: "animated pulse col-xl-4 col-lg-6"
     });
   }
 
   deactivateHover() {
-    this.setState({ isHovered: false, activeClass: "col-xl-4 col-md-6" });
+    this.setState({ isHovered: false, activeClass: "col-xl-4 col-lg-6" });
   }
 
   render() {
@@ -70,7 +70,7 @@ class AppCard extends Component {
             {featuredIndicator}
             {collaborationIndicator}
           </div>
-          <a target="_blank" href={thumbnailLink}>
+          <a target="_blank" href={thumbnailLink} className='d-flex justify-content-center bg-light'>
             <img src={this.props.data.imagePath} style={appThumbnailStyle} />
           </a>
           <div className="card-footer text-right">
