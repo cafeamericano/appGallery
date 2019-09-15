@@ -1,31 +1,7 @@
 import React, { Component } from "react";
 
 import ApplicationsContainer from "./ApplicationsContainer";
-import Tag from "./Tag";
-
-var tagsArr = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "SQL",
-  "JSON",
-  "React",
-  "NodeJS",
-  "ExpressJS",
-  "ReactJS",
-  "jQuery",
-  "Bootstrap",
-  "Materialize",
-  "MySQL",
-  "MongoDB",
-  "PostgreSQL",
-  "Firebase DB",
-  "Firebase Authentication",
-  "Handlebars",
-  "C++",
-  "Python",
-  "Java"
-];
+import Keyword from "./Keyword";
 
 var style = {
   ApplicationsContainer: {
@@ -45,39 +21,74 @@ class Main extends Component {
       subComponentVisibilityToggler: {
         Applications: true
       },
-      activeTags: []
+      keywordsArray: [],
+      activeKeywords: []
     };
-    this.pullInTagName = this.pullInTagName.bind(this);
+    this.grabKeywordsFromDatabase = this.grabKeywordsFromDatabase.bind(this);
+    this.pullInKeywordName = this.pullInKeywordName.bind(this);
   }
 
-  pullInTagName(arg) {
-    var activeTags = this.state.activeTags;
-    console.log(activeTags)
-    var isAlreadyInArray = activeTags.includes(arg);
-    console.log(isAlreadyInArray)
+  componentWillMount() {
+    this.grabKeywordsFromDatabase();
+  }
+
+  grabKeywordsFromDatabase() {
+    let url = "/keywords";
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response);
+        this.setState({
+          keywordsArray: response
+        });
+      });
+  }
+
+  pullInKeywordName(arg) {
+    var activeKeywords = this.state.activeKeywords;
+    console.log(activeKeywords);
+    var isAlreadyInArray = activeKeywords.includes(arg);
+    console.log(isAlreadyInArray);
     if (isAlreadyInArray) {
-      let updatedArray = activeTags.filter(item => {
+      let updatedArray = activeKeywords.filter(item => {
         return item !== arg;
       });
-      console.log(updatedArray)
-      this.setState({ activeTags: updatedArray });
+      console.log(updatedArray);
+      this.setState({ activeKeywords: updatedArray });
     } else {
-      let updatedArray = activeTags.concat(arg)
-      console.log(updatedArray)
-      this.setState({ activeTags: updatedArray });
+      let updatedArray = activeKeywords.concat(arg);
+      console.log(updatedArray);
+      this.setState({ activeKeywords: updatedArray });
     }
   }
 
   render() {
-    let allTags = tagsArr.map((tagName, i) => (
-      <Tag key={i} tagName={tagName} passTagNameToParent={this.pullInTagName} />
+    let allKeywords = this.state.keywordsArray.map((keyword, i) => (
+      <Keyword
+        key={i}
+        keywordName={keyword.name}
+        type={keyword.type}
+        passKeywordNameToParent={this.pullInKeywordName}
+      />
     ));
+
+    //Define tag groups
+    let languages = allKeywords.filter(item => item.props.type === "language");
+    let frameworks = allKeywords.filter(
+      item => item.props.type === "framework"
+    );
+    let databases = allKeywords.filter(item => item.props.type === "database");
+    let otherTechnologies = allKeywords.filter(
+      item => item.props.type === "other"
+    );
+
     return (
       <main className="container-fluid">
         <div className="row">
           {/* Column */}
           <section className="col-9 p-3" style={style.ApplicationsContainer}>
-            <ApplicationsContainer activeTags={this.state.activeTags}
+            <ApplicationsContainer
+              activeKeywords={this.state.activeKeywords}
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>
@@ -85,8 +96,30 @@ class Main extends Component {
           <section className="col-3 bg-light text-dark p-4">
             <h4>App Gallery</h4>
             <h1>Matthew Farmer</h1>
-            <hr />
-            {allTags}
+
+            <div className="mb-4">
+              Languages
+              <hr></hr>
+              {languages}
+            </div>
+
+            <div className="mb-4">
+              Frameworks
+              <hr></hr>
+              {frameworks}
+            </div>
+
+            <div className="mb-4">
+              Databases
+              <hr></hr>
+              {databases}
+            </div>
+
+            <div className="mb-4">
+              Other Technologies
+              <hr></hr>
+              {otherTechnologies}
+            </div>
           </section>
         </div>
       </main>

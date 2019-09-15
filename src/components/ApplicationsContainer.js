@@ -5,9 +5,7 @@ class ApplicationsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      databaseRecords: {
-        data: []
-      }
+      databaseRecords: []
     };
   }
 
@@ -23,28 +21,28 @@ class ApplicationsContainer extends Component {
     let url = "/hit-db";
     fetch(url)
       .then(response => response.json())
-      .then(results => {
+      .then(response => {
+        console.log(response)
         this.setState({
-          databaseRecords: results
+          databaseRecords: response
         });
       });
   }
 
   render() {
     //Prep
-    var allItems = this.state.databaseRecords.data;
-    var activeTags = this.props.activeTags;
+    var allItems = this.state.databaseRecords;
+    var activeKeywords = this.props.activeKeywords;
     var queriedApps = allItems.filter(function(item) {
       let litmus = true;
-      for (let i = 0; i < activeTags.length; i++) {
-        if (item.techsUsed.includes(activeTags[i])) {
+      for (let i = 0; i < activeKeywords.length; i++) {
+        if (item.keywords.includes(activeKeywords[i])) {
         } else {
           litmus = false;
         }
       }
       return litmus;
     });
-    console.log(queriedApps);
 
     //Render
     return (
