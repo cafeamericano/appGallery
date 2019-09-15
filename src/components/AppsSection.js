@@ -13,13 +13,13 @@ class AppsSection extends Component {
 
     return (
       <div className="row animated fadeInUpBig">
-        <div class="col">
-          <div class="mb-4 p-3">
+        <div className="col">
+          <div className="mb-4 p-3">
             <h3 className="text-dark mb-2">
               {this.props.sectionName}
             </h3>
             <hr></hr>
-            <div class="row">{cardsArray}</div>
+            <div className="row">{cardsArray}</div>
           </div>
         </div>
       </div>

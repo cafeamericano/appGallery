@@ -40,11 +40,11 @@ class AppCard extends Component {
           </div>
           <div className="card-footer text-right">
             <a href={this.props.data.githubLink}>
-              <i class="fab fa-github"></i>
+              <i className="fab fa-github"></i>
             </a>
             <span> | </span>
             <a href={this.props.data.deployedLink}>
-              <i class="fas fa-external-link-alt"></i>
+              <i className="fas fa-external-link-alt"></i>
             </a>
           </div>
         </div>

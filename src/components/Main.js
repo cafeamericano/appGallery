@@ -4,6 +4,28 @@ import React, { Component } from "react";
 
 //Child components
 import ApplicationsContainer from "./ApplicationsContainer";
+import Tag from "./Tag";
+
+var tagsArr = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "SQL",
+  "JSON",
+  "React",
+  "NodeJS",
+  "ExpressJS",
+  "ReactJS",
+  "jQuery",
+  "Bootstrap",
+  "Materialize",
+  "MySQL",
+  "MongoDB",
+  "PostgreSQL",
+  "Firebase DB",
+  "Firebase Authentication",
+  "Handlebars"
+];
 
 //STYLING=========================================================================================================================================================
 
@@ -54,28 +76,22 @@ class Main extends Component {
   //RENDER=========================================================================================================================================================
 
   render() {
+    let allTags = tagsArr.map((tagName, i) => <Tag key={i} tagName={tagName} />);
     return (
       <main className="container-fluid">
-        <div class="row">
+        <div className="row">
           {/* Column */}
-          <section class="col-9 p-3" style={style.ApplicationsContainer}>
+          <section className="col-9 p-3" style={style.ApplicationsContainer}>
             <ApplicationsContainer
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>
           {/* Column */}
-          <section class="col-3 bg-light text-dark p-4">
+          <section className="col-3 bg-light text-dark p-4">
             <h4>App Gallery</h4>
             <h1>Matthew Farmer</h1>
             <hr />
-            <div>
-              <span class="badge badge-pill badge-light border border-dark m-1">Vue</span>
-              <span class="badge badge-pill badge-light border border-dark m-1">React</span>
-              <span class="badge badge-pill badge-light border border-dark m-1">Angular</span>
-              <span class="badge badge-pill badge-light border border-dark m-1">MongoDB</span>
-              <span class="badge badge-pill badge-light border border-dark m-1">PostgreSQL</span>
-
-            </div>
+            {allTags}
           </section>
         </div>
       </main>
