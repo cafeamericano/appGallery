@@ -65,9 +65,15 @@ app.get("*", function(req, res) {
 //   publishDate: "2019-08-29"
 // };
 
+// var mySQL = {
+//   name: "MySQL",
+//   type: "Database" 
+// }
+
 //START SERVER================================================================
 
-db.App.create(patientPlus)
+//db.App.create(patientPlus)
+//db.Keyword.create(mySQL)
 
 var PORT = process.env.PORT || 5000;
 
