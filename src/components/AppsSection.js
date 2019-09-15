@@ -16,7 +16,7 @@ class AppsSection extends Component {
         <div className="col">
           <div className="mb-4 p-3">
             <h3 className="text-dark mb-2">
-              {this.props.sectionName}
+              Displaying {this.props.resultCount} applications.
             </h3>
             <hr></hr>
             <div className="row">{cardsArray}</div>
