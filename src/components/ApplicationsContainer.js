@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-//import AppsFeatured from "./AppsFeatured";
 import AppsSection from "./AppsSection";
 
-class Applications extends Component {
+class ApplicationsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,4 +72,4 @@ class Applications extends Component {
   }
 }
 
-export default Applications;
+export default ApplicationsContainer;
