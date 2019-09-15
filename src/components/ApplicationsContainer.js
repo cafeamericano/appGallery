@@ -10,6 +10,7 @@ class ApplicationsContainer extends Component {
       },
       activeTags: this.props.activeTags
     };
+    this.updateActiveTags = this.updateActiveTags.bind(this);
   }
 
   componentDidUpdate() {
@@ -18,6 +19,10 @@ class ApplicationsContainer extends Component {
 
   componentWillMount() {
     this.handleSearch();
+  }
+
+  updateActiveTags() {
+    this.setState({ activeTags: this.props.activeTags });
   }
 
   handleSearch() {
@@ -34,7 +39,7 @@ class ApplicationsContainer extends Component {
   render() {
     //Prep
     var allItems = this.state.databaseRecords.data;
-    var activeTags = this.state.activeTags;
+    var activeTags = this.props.activeTags;
     var featuredApps = allItems.filter(function(item) {
       return item.featured === true;
     });
@@ -48,9 +53,20 @@ class ApplicationsContainer extends Component {
       return item.language !== "JavaScript";
     });
     var queriedApps = allItems.filter(function(item) {
-      return item.techsUsed.includes("JavaScript") && item.techsUsed.includes("MongoDB");
+      let litmus = true;
+      for (let i = 0; i < activeTags.length; i++) {
+        if (item.techsUsed.includes(activeTags[i])) {
+        } else {
+          litmus = false;
+        }
+      }
+      return litmus;
+      // return activeTags.filter(function(tech) {
+      //   return item.techsUsed.includes(tech);
+      // });
+      //return item.techsUsed.includes("JavaScript") && item.techsUsed.includes("MySQL");
     });
-    console.log(queriedApps)
+    console.log(queriedApps);
 
     //Render
     return (
