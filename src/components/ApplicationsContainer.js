@@ -48,7 +48,7 @@ class ApplicationsContainer extends Component {
       return item.language !== "JavaScript";
     });
     var queriedApps = allItems.filter(function(item) {
-      return item.techsUsed.includes("C++");
+      return item.techsUsed.includes("JavaScript") && item.techsUsed.includes("MongoDB");
     });
     console.log(queriedApps)
 
