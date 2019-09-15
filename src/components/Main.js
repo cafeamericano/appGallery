@@ -48,7 +48,21 @@ class Main extends Component {
   }
 
   pullInTagName(arg) {
-    this.setState({ activeTags: [...this.state.activeTags, arg] });
+    var activeTags = this.state.activeTags;
+    console.log(activeTags)
+    var isAlreadyInArray = activeTags.includes(arg);
+    console.log(isAlreadyInArray)
+    if (isAlreadyInArray) {
+      let updatedArray = activeTags.filter(item => {
+        return item !== arg;
+      });
+      console.log(updatedArray)
+      this.setState({ activeTags: updatedArray });
+    } else {
+      let updatedArray = activeTags.concat(arg)
+      console.log(updatedArray)
+      this.setState({ activeTags: updatedArray });
+    }
   }
 
   render() {

@@ -15,7 +15,7 @@ class Tag extends Component {
   toggleTag = () => {
     if (this.state.isClicked) {
       this.setState({ isClicked: false, activeClass: inactiveTagStyle });
-      this.props.passTagNameToParent("");
+      this.props.passTagNameToParent(this.props.tagName);
     } else {
       this.setState({ isClicked: true, activeClass: activeTagStyle });
       this.props.passTagNameToParent(this.props.tagName);

@@ -37,8 +37,6 @@ class ApplicationsContainer extends Component {
     fetch(url)
       .then(response => response.json())
       .then(results => {
-        console.log(results);
-        console.log(results.length);
         this.setState({
           databaseRecords: results
         });
