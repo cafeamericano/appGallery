@@ -3,16 +3,6 @@ import React, { Component } from "react";
 import ApplicationsContainer from "./ApplicationsContainer";
 import Keyword from "./Keyword";
 
-var style = {
-  ApplicationsContainer: {
-    backgroundImage:
-      "url(https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80)",
-    backgroundSize: "cover",
-    backgroundRepeat: "repeat",
-    backgroundAttachment: "fixed"
-  }
-};
-
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -86,7 +76,7 @@ class Main extends Component {
       <main className="container-fluid">
         <div className="row">
           {/* Column */}
-          <section className="col-9 p-3" style={style.ApplicationsContainer}>
+          <section className="col-9 p-3">
             <ApplicationsContainer
               activeKeywords={this.state.activeKeywords}
               visibility={this.state.subComponentVisibilityToggler.Applications}
