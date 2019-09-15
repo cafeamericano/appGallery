@@ -32,11 +32,11 @@ class ApplicationsContainer extends Component {
   render() {
     //Prep
     var allItems = this.state.databaseRecords;
-    var activeTags = this.props.activeTags;
+    var activeKeywords = this.props.activeKeywords;
     var queriedApps = allItems.filter(function(item) {
       let litmus = true;
-      for (let i = 0; i < activeTags.length; i++) {
-        if (item.techsUsed.includes(activeTags[i])) {
+      for (let i = 0; i < activeKeywords.length; i++) {
+        if (item.keywords.includes(activeKeywords[i])) {
         } else {
           litmus = false;
         }

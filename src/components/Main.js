@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 import ApplicationsContainer from "./ApplicationsContainer";
-import Tag from "./Tag";
+import Keyword from "./Keyword";
 
-var tagsArr = [
+var keywordsArr = [
   "HTML",
   "CSS",
   "JavaScript",
@@ -45,39 +45,39 @@ class Main extends Component {
       subComponentVisibilityToggler: {
         Applications: true
       },
-      activeTags: []
+      activeKeywords: []
     };
-    this.pullInTagName = this.pullInTagName.bind(this);
+    this.pullInKeywordName = this.pullInKeywordName.bind(this);
   }
 
-  pullInTagName(arg) {
-    var activeTags = this.state.activeTags;
-    console.log(activeTags)
-    var isAlreadyInArray = activeTags.includes(arg);
+  pullInKeywordName(arg) {
+    var activeKeywords = this.state.activeKeywords;
+    console.log(activeKeywords)
+    var isAlreadyInArray = activeKeywords.includes(arg);
     console.log(isAlreadyInArray)
     if (isAlreadyInArray) {
-      let updatedArray = activeTags.filter(item => {
+      let updatedArray = activeKeywords.filter(item => {
         return item !== arg;
       });
       console.log(updatedArray)
-      this.setState({ activeTags: updatedArray });
+      this.setState({ activeKeywords: updatedArray });
     } else {
-      let updatedArray = activeTags.concat(arg)
+      let updatedArray = activeKeywords.concat(arg)
       console.log(updatedArray)
-      this.setState({ activeTags: updatedArray });
+      this.setState({ activeKeywords: updatedArray });
     }
   }
 
   render() {
-    let allTags = tagsArr.map((tagName, i) => (
-      <Tag key={i} tagName={tagName} passTagNameToParent={this.pullInTagName} />
+    let allKeywords = keywordsArr.map((keywordName, i) => (
+      <Keyword key={i} keywordName={keywordName} passKeywordNameToParent={this.pullInKeywordName} />
     ));
     return (
       <main className="container-fluid">
         <div className="row">
           {/* Column */}
           <section className="col-9 p-3" style={style.ApplicationsContainer}>
-            <ApplicationsContainer activeTags={this.state.activeTags}
+            <ApplicationsContainer activeKeywords={this.state.activeKeywords}
               visibility={this.state.subComponentVisibilityToggler.Applications}
             ></ApplicationsContainer>
           </section>
@@ -86,7 +86,7 @@ class Main extends Component {
             <h4>App Gallery</h4>
             <h1>Matthew Farmer</h1>
             <hr />
-            {allTags}
+            {allKeywords}
           </section>
         </div>
       </main>
