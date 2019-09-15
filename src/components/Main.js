@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import ApplicationsContainer from "./ApplicationsContainer";
 import Keyword from "./Keyword";
 
+var sidepanelStyle = {
+  position: "-webkit-sticky",
+  position: "sticky",
+  top: "0"
+}
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -84,31 +89,33 @@ class Main extends Component {
           </section>
           {/* Column */}
           <section className="col-3 bg-light text-dark p-4">
-            <h4>Matthew Farmer's</h4>
-            <h2>App Gallery</h2>
+            <div style={sidepanelStyle}>
+              <h4>Matthew Farmer's</h4>
+              <h2>App Gallery</h2>
 
-            <div className="mb-4">
-              Languages
-              <hr></hr>
-              {languages}
-            </div>
+              <div className="mb-4">
+                Languages
+                <hr></hr>
+                {languages}
+              </div>
 
-            <div className="mb-4">
-              Frameworks
-              <hr></hr>
-              {frameworks}
-            </div>
+              <div className="mb-4">
+                Frameworks
+                <hr></hr>
+                {frameworks}
+              </div>
 
-            <div className="mb-4">
-              Databases
-              <hr></hr>
-              {databases}
-            </div>
+              <div className="mb-4">
+                Databases
+                <hr></hr>
+                {databases}
+              </div>
 
-            <div className="mb-4">
-              Other Technologies
-              <hr></hr>
-              {otherTechnologies}
+              <div className="mb-4">
+                Other Technologies
+                <hr></hr>
+                {otherTechnologies}
+              </div>
             </div>
           </section>
         </div>
