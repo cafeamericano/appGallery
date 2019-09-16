@@ -18,9 +18,10 @@ var bg = {
     "https://images.unsplash.com/photo-1566746846724-1ee5a2dc0091?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80",
   plant:
     "https://images.unsplash.com/photo-1471086569966-db3eebc25a59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80",
-    waterGrass: "https://images.unsplash.com/photo-1566155119454-2b581dd44c59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80",
-    waterLeaf: "https://images.unsplash.com/photo-1546526474-8bfb84574027?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
-
+  waterGrass:
+    "https://images.unsplash.com/photo-1566155119454-2b581dd44c59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80",
+  waterLeaf:
+    "https://images.unsplash.com/photo-1546526474-8bfb84574027?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80"
 };
 
 var style = {

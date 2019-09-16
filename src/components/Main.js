@@ -2,12 +2,22 @@ import React, { Component } from "react";
 
 import ApplicationsContainer from "./ApplicationsContainer";
 import Keyword from "./Keyword";
+import Banner from "./banner.jpg";
 
 var sidepanelStyle = {
   position: "-webkit-sticky",
   position: "sticky",
-  top: "0"
+  top: "0",
+};
+
+var noPadding = {
+  padding: "0px"
 }
+
+var bannerStyle = {
+  width: "100%"
+}
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -88,11 +98,11 @@ class Main extends Component {
             ></ApplicationsContainer>
           </section>
           {/* Column */}
-          <section className="col-md-3 bg-light text-dark p-4 shadow">
-            <div style={sidepanelStyle}>
-              <h4>Matthew Farmer's</h4>
-              <h2>App Gallery</h2>
-
+          <section className="col-md-3 bg-light text-dark shadow" style={noPadding}>
+            <div>
+              <img src={Banner} style={bannerStyle}></img>
+            </div>
+            <div style={sidepanelStyle} className='p-4'>
               <div className="mb-4">
                 Languages
                 <hr></hr>
