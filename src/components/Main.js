@@ -7,16 +7,16 @@ import Banner from "./banner.jpg";
 var sidepanelStyle = {
   position: "-webkit-sticky",
   position: "sticky",
-  top: "0",
+  top: "0"
 };
 
 var noPadding = {
   padding: "0px"
-}
+};
 
 var bannerStyle = {
   width: "100%"
-}
+};
 
 class Main extends Component {
   constructor(props) {
@@ -98,35 +98,40 @@ class Main extends Component {
             ></ApplicationsContainer>
           </section>
           {/* Column */}
-          <section className="col-md-3 bg-light text-dark shadow" style={noPadding}>
-            <div>
-              <img src={Banner} style={bannerStyle}></img>
-            </div>
-            <div style={sidepanelStyle} className='p-4'>
-              <div className="mb-4">
-                Languages
-                <hr></hr>
-                {languages}
+          <section
+            className="col-md-3 bg-light text-dark shadow"
+            style={noPadding}
+          >
+            <nav style={sidepanelStyle}>
+              <div>
+                <img src={Banner} style={bannerStyle}></img>
               </div>
+              <div className="p-4">
+                <div className="mb-4">
+                  Languages
+                  <hr></hr>
+                  {languages}
+                </div>
 
-              <div className="mb-4">
-                Frameworks
-                <hr></hr>
-                {frameworks}
-              </div>
+                <div className="mb-4">
+                  Frameworks
+                  <hr></hr>
+                  {frameworks}
+                </div>
 
-              <div className="mb-4">
-                Databases
-                <hr></hr>
-                {databases}
-              </div>
+                <div className="mb-4">
+                  Databases
+                  <hr></hr>
+                  {databases}
+                </div>
 
-              <div className="mb-4">
-                Other Technologies
-                <hr></hr>
-                {otherTechnologies}
+                <div className="mb-4">
+                  Other Technologies
+                  <hr></hr>
+                  {otherTechnologies}
+                </div>
               </div>
-            </div>
+            </nav>
           </section>
         </div>
       </main>

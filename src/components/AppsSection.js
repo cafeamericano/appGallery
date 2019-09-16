@@ -11,13 +11,15 @@ class AppsSection extends Component {
       <AppCard key={item._id} data={item} />
     ));
 
+    let resultDisplay = this.props.resultCount !== 1 ? `Displaying ${this.props.resultCount} applications.` : `Displaying ${this.props.resultCount} application.`
+
     return (
       <div className="row animated fadeInUpBig">
         <div className="col">
           <div className="mb-4 p-3">
-            <h3 className="text-dark mb-2">
-              Displaying {this.props.resultCount} applications.
-            </h3>
+            <small className="text-dark mb-2">
+              {resultDisplay}
+            </small>
             <hr></hr>
             <div className="row">{cardsArray}</div>
           </div>
